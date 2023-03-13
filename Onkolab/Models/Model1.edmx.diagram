@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ff80baf3952945be9c2b0570681c87a4" Name="Diagram1">
+        <EntityTypeShape EntityType="OnkolabModel.Person" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnkolabModel.MainDiagnosis" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OnkolabModel.SubDiagnosis" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="OnkolabModel.ActiveIngredient" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Protokols" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Unit" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="OnkolabModel.EtkenMadde" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Patients" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="OnkolabModel.PrescriptionItems" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Prescription" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Brands" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Speeds" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Medicines" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Injectors" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OnkolabModel.OperationItems" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="OnkolabModel.Operations" Width="1.5" PointX="11.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OnkolabModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActiveIngredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProtokolId" Type="int" Nullable="false" />
+          <Property Name="Dose" Type="float" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Sf" Type="bit" Nullable="false" />
+          <Property Name="Dex" Type="bit" Nullable="false" />
+          <Property Name="Izodex" Type="bit" Nullable="false" />
+          <Property Name="DilitionAmount" Type="float" />
+          <Property Name="Pvc" Type="bit" />
+          <Property Name="Pe" Type="bit" />
+          <Property Name="Eva" Type="bit" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="ExtraNotes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EtkenMadde">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProtokolId" Type="int" Nullable="false" />
+          <Property Name="Dose" Type="float" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Sf" Type="bit" Nullable="false" />
+          <Property Name="Dex" Type="bit" Nullable="false" />
+          <Property Name="Izodex" Type="bit" Nullable="false" />
+          <Property Name="Pvc" Type="bit" Nullable="false" />
+          <Property Name="Pe" Type="bit" Nullable="false" />
+          <Property Name="Eva" Type="bit" Nullable="false" />
+          <Property Name="DilitionAmount" Type="float" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Injectors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Capacity" Type="float" Nullable="false" />
+          <Property Name="TopIndex" Type="float" Nullable="false" />
+          <Property Name="TopValue" Type="int" Nullable="false" />
+          <Property Name="BotIndex" Type="float" Nullable="false" />
+          <Property Name="BotValue" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MainDiagnosis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Medicines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EtkenMaddeId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gtin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mg" Type="float" Nullable="false" />
+          <Property Name="Ml" Type="float" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="Ozkutle" Type="float" Nullable="false" />
+          <Property Name="CozucuTuruId" Type="int" Nullable="false" />
+          <Property Name="CozucuMıktarı" Type="float" Nullable="false" />
+          <Property Name="CozmeHızıId" Type="int" Nullable="false" />
+          <Property Name="mgveyau1" Type="float" Nullable="false" />
+          <Property Name="TasiyiciSolisyon" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KaristirmaHiziId" Type="int" Nullable="false" />
+          <Property Name="BirimDoz" Type="float" Nullable="false" />
+          <Property Name="KaristirmaSuresi" Type="float" Nullable="false" />
+          <Property Name="SonKullanımSuresi" Type="int" Nullable="false" />
+          <Property Name="SeyreltmeSolisyonu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EnjeksiyonHiziId" Type="int" Nullable="false" />
+          <Property Name="FormTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OperationItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationId" Type="int" Nullable="false" />
+          <Property Name="MedicineId" Type="int" Nullable="false" />
+          <Property Name="InjektorId" Type="int" Nullable="false" />
+          <Property Name="TripCounter" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+          <Property Name="PrescriptionId" Type="int" Nullable="false" />
+          <Property Name="EtkenMaddeId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Prescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Boy" Type="int" Nullable="false" />
+          <Property Name="Kg" Type="int" Nullable="false" />
+          <Property Name="ProtokolId" Type="int" Nullable="false" />
+          <Property Name="SubDiagnosisId" Type="int" Nullable="false" />
+          <Property Name="MainDiagnosisId" Type="int" Nullable="false" />
+          <Property Name="Bsa" Type="float" Nullable="false" />
+          <Property Name="TeslimEdilecekBirimId" Type="int" Nullable="false" />
+          <Property Name="Silindi" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrescriptionItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrescriptionId" Type="int" Nullable="false" />
+          <Property Name="EtkenMaddeId" Type="int" Nullable="false" />
+          <Property Name="HesaplananDoz" Type="float" Nullable="false" />
+          <Property Name="UygulanacakDoz" Type="float" Nullable="false" />
+          <Property Name="SeyreltmeMiktari" Type="float" Nullable="false" />
+          <Property Name="Sf" Type="bit" Nullable="false" />
+          <Property Name="Dex" Type="bit" Nullable="false" />
+          <Property Name="Izodex" Type="bit" Nullable="false" />
+          <Property Name="Pvc" Type="bit" Nullable="false" />
+          <Property Name="Eva" Type="bit" Nullable="false" />
+          <Property Name="Pe" Type="bit" Nullable="false" />
+          <Property Name="UygualamTarihi" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExtraNotes" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Protokols">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="SubDiagnosisId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Speeds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SubDiagnosis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="MainDiagnosisId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="List_EtkenMadde_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="List_EtkenMaddes_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="List_Prescription" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="List_Prescription_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="List_Protokol_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="List_Sub_Diagnosis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Operation_Sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="OnkolabModelStoreContainer">
+          <EntitySet Name="ActiveIngredient" EntityType="Self.ActiveIngredient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EtkenMadde" EntityType="Self.EtkenMadde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Injectors" EntityType="Self.Injectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainDiagnosis" EntityType="Self.MainDiagnosis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationItems" EntityType="Self.OperationItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prescription" EntityType="Self.Prescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrescriptionItems" EntityType="Self.PrescriptionItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Protokols" EntityType="Self.Protokols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speeds" EntityType="Self.Speeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubDiagnosis" EntityType="Self.SubDiagnosis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnkolabModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="OnkolabDb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="MainDiagnosis" EntityType="OnkolabModel.MainDiagnosis" />
+          <EntitySet Name="SubDiagnosis" EntityType="OnkolabModel.SubDiagnosis" />
+          <EntitySet Name="ActiveIngredient" EntityType="OnkolabModel.ActiveIngredient" />
+          <EntitySet Name="Protokols" EntityType="OnkolabModel.Protokols" />
+          <FunctionImport Name="List_Sub_Diagnosis" ReturnType="Collection(OnkolabModel.List_Sub_Diagnosis_Result)" />
+          <EntitySet Name="Unit" EntityType="OnkolabModel.Unit" />
+          <EntitySet Name="EtkenMadde" EntityType="OnkolabModel.EtkenMadde" />
+          <EntitySet Name="Patients" EntityType="OnkolabModel.Patients" />
+          <EntitySet Name="PrescriptionItems" EntityType="OnkolabModel.PrescriptionItems" />
+          <EntitySet Name="Prescription" EntityType="OnkolabModel.Prescription" />
+          <EntitySet Name="Brands" EntityType="OnkolabModel.Brands" />
+          <EntitySet Name="Speeds" EntityType="OnkolabModel.Speeds" />
+          <FunctionImport Name="List_Prescription" ReturnType="Collection(OnkolabModel.List_Prescription_Result)" />
+          <FunctionImport Name="List_Prescription_SP" ReturnType="Collection(OnkolabModel.List_Prescription_SP_Result)" />
+          <EntitySet Name="Medicines" EntityType="OnkolabModel.Medicines" />
+          <EntitySet Name="Injectors" EntityType="OnkolabModel.Injectors" />
+          <FunctionImport Name="List_Protokol_SP" ReturnType="Collection(OnkolabModel.List_Protokol_SP_Result)" />
+          <FunctionImport Name="List_EtkenMadde_SP" ReturnType="Collection(OnkolabModel.List_EtkenMadde_SP_Result)" />
+          <FunctionImport Name="List_EtkenMaddes_SP" ReturnType="Collection(OnkolabModel.List_EtkenMaddes_SP_Result)" />
+          <EntitySet Name="OperationItems" EntityType="OnkolabModel.OperationItems" />
+          <EntitySet Name="Operations" EntityType="OnkolabModel.Operations" />
+          <FunctionImport Name="Operation_Sp" ReturnType="Collection(OnkolabModel.Operation_Sp_Result)" />
+        </EntityContainer>
+        <EntityType Name="MainDiagnosis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SubDiagnosis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MainDiagnosisId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActiveIngredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProtokolId" Type="Int32" Nullable="false" />
+          <Property Name="Dose" Type="Double" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Sf" Type="Boolean" Nullable="false" />
+          <Property Name="Dex" Type="Boolean" Nullable="false" />
+          <Property Name="Izodex" Type="Boolean" Nullable="false" />
+          <Property Name="DilitionAmount" Type="Double" />
+          <Property Name="Pvc" Type="Boolean" />
+          <Property Name="Pe" Type="Boolean" />
+          <Property Name="Eva" Type="Boolean" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Protokols">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SubDiagnosisId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="List_Sub_Diagnosis_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MainDiagnosis" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EtkenMadde">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProtokolId" Type="Int32" Nullable="false" />
+          <Property Name="Dose" Type="Double" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Sf" Type="Boolean" Nullable="false" />
+          <Property Name="Dex" Type="Boolean" Nullable="false" />
+          <Property Name="Izodex" Type="Boolean" Nullable="false" />
+          <Property Name="Pvc" Type="Boolean" Nullable="false" />
+          <Property Name="Pe" Type="Boolean" Nullable="false" />
+          <Property Name="Eva" Type="Boolean" Nullable="false" />
+          <Property Name="DilitionAmount" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrescriptionItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="EtkenMaddeId" Type="Int32" Nullable="false" />
+          <Property Name="HesaplananDoz" Type="Double" Nullable="false" />
+          <Property Name="UygulanacakDoz" Type="Double" Nullable="false" />
+          <Property Name="SeyreltmeMiktari" Type="Double" Nullable="false" />
+          <Property Name="Sf" Type="Boolean" Nullable="false" />
+          <Property Name="Dex" Type="Boolean" Nullable="false" />
+          <Property Name="Izodex" Type="Boolean" Nullable="false" />
+          <Property Name="Pvc" Type="Boolean" Nullable="false" />
+          <Property Name="Eva" Type="Boolean" Nullable="false" />
+          <Property Name="Pe" Type="Boolean" Nullable="false" />
+          <Property Name="UygualamTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExtraNotes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Prescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Boy" Type="Int32" Nullable="false" />
+          <Property Name="Kg" Type="Int32" Nullable="false" />
+          <Property Name="ProtokolId" Type="Int32" Nullable="false" />
+          <Property Name="SubDiagnosisId" Type="Int32" Nullable="false" />
+          <Property Name="MainDiagnosisId" Type="Int32" Nullable="false" />
+          <Property Name="Bsa" Type="Double" Nullable="false" />
+          <Property Name="TeslimEdilecekBirimId" Type="Int32" Nullable="false" />
+          <Property Name="Silindi" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Speeds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="List_Prescription_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Boy" Nullable="false" />
+          <Property Type="Int32" Name="Kg" Nullable="false" />
+          <Property Type="String" Name="HastaAdı" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Hasta_Soyadı" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Bsa" Nullable="true" />
+          <Property Type="String" Name="ProtokolAdı" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AltTanı" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AnıTanı" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="List_Prescription_SP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Boy" Nullable="false" />
+          <Property Type="Int32" Name="Kg" Nullable="false" />
+          <Property Type="String" Name="HastaAdi" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="HastaSoyadi" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="Bsa" Nullable="true" />
+          <Property Type="String" Name="ProtokolAdi" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AltTani" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AnaTani" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="Medicines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EtkenMaddeId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gtin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mg" Type="Double" Nullable="false" />
+          <Property Name="Ml" Type="Double" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Ozkutle" Type="Double" Nullable="false" />
+          <Property Name="CozucuTuruId" Type="Int32" Nullable="false" />
+          <Property Name="CozucuMıktarı" Type="Double" Nullable="false" />
+          <Property Name="CozmeHızıId" Type="Int32" Nullable="false" />
+          <Property Name="mgveyau1" Type="Double" Nullable="false" />
+          <Property Name="TasiyiciSolisyon" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KaristirmaHiziId" Type="Int32" Nullable="false" />
+          <Property Name="BirimDoz" Type="Double" Nullable="false" />
+          <Property Name="KaristirmaSuresi" Type="Double" Nullable="false" />
+          <Property Name="SonKullanımSuresi" Type="Int32" Nullable="false" />
+          <Property Name="SeyreltmeSolisyonu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EnjeksiyonHiziId" Type="Int32" Nullable="false" />
+          <Property Name="FormTipi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Injectors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Double" Nullable="false" />
+          <Property Name="TopIndex" Type="Double" Nullable="false" />
+          <Property Name="TopValue" Type="Int32" Nullable="false" />
+          <Property Name="BotIndex" Type="Double" Nullable="false" />
+          <Property Name="BotValue" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="List_Protokol_SP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AltTanı" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AnaTanı" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="List_EtkenMadde_SP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AltTanı" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AnaTanı" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Birim" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Expr1" Nullable="false" MaxLength="100" />
+          <Property Type="Double" Name="Dose" Nullable="false" />
+          <Property Type="Boolean" Name="Sf" Nullable="false" />
+          <Property Type="Boolean" Name="Dex" Nullable="false" />
+          <Property Type="Boolean" Name="Izodex" Nullable="false" />
+          <Property Type="Boolean" Name="Pvc" Nullable="false" />
+          <Property Type="Boolean" Name="Pe" Nullable="false" />
+          <Property Type="Boolean" Name="Eva" Nullable="false" />
+          <Property Type="Double" Name="DilitionAmount" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Notes" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="List_EtkenMaddes_SP_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="EtkenMadde" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Protokol" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AltTanı" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="AnaTanı" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Birim" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Dose" Nullable="false" />
+          <Property Type="Boolean" Name="Sf" Nullable="false" />
+          <Property Type="Boolean" Name="Dex" Nullable="false" />
+          <Property Type="Boolean" Name="Izodex" Nullable="false" />
+          <Property Type="Boolean" Name="Pvc" Nullable="false" />
+          <Property Type="Boolean" Name="Pe" Nullable="false" />
+          <Property Type="Boolean" Name="Eva" Nullable="false" />
+          <Property Type="Double" Name="DilitionAmount" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Notes" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="OperationItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationId" Type="Int32" Nullable="false" />
+          <Property Name="MedicineId" Type="Int32" Nullable="false" />
+          <Property Name="InjektorId" Type="Int32" Nullable="false" />
+          <Property Name="TripCounter" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="PrescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="EtkenMaddeId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="Operation_Sp_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Age" Nullable="true" />
+          <Property Type="Int32" Name="Boy" Nullable="false" />
+          <Property Type="Int32" Name="Kg" Nullable="false" />
+          <Property Type="Double" Name="Bsa" Nullable="false" />
+          <Property Type="String" Name="EtkenMadde" Nullable="false" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnkolabModelStoreContainer" CdmEntityContainer="OnkolabDb">
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="OnkolabModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainDiagnosis">
+            <EntityTypeMapping TypeName="OnkolabModel.MainDiagnosis">
+              <MappingFragment StoreEntitySet="MainDiagnosis">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubDiagnosis">
+            <EntityTypeMapping TypeName="OnkolabModel.SubDiagnosis">
+              <MappingFragment StoreEntitySet="SubDiagnosis">
+                <ScalarProperty Name="MainDiagnosisId" ColumnName="MainDiagnosisId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActiveIngredient">
+            <EntityTypeMapping TypeName="OnkolabModel.ActiveIngredient">
+              <MappingFragment StoreEntitySet="ActiveIngredient">
+                <ScalarProperty Name="ExtraNotes" ColumnName="ExtraNotes" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Eva" ColumnName="Eva" />
+                <ScalarProperty Name="Pe" ColumnName="Pe" />
+                <ScalarProperty Name="Pvc" ColumnName="Pvc" />
+                <ScalarProperty Name="DilitionAmount" ColumnName="DilitionAmount" />
+                <ScalarProperty Name="Izodex" ColumnName="Izodex" />
+                <ScalarProperty Name="Dex" ColumnName="Dex" />
+                <ScalarProperty Name="Sf" ColumnName="Sf" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Dose" ColumnName="Dose" />
+                <ScalarProperty Name="ProtokolId" ColumnName="ProtokolId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Protokols">
+            <EntityTypeMapping TypeName="OnkolabModel.Protokols">
+              <MappingFragment StoreEntitySet="Protokols">
+                <ScalarProperty Name="SubDiagnosisId" ColumnName="SubDiagnosisId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="List_Sub_Diagnosis" FunctionName="OnkolabModel.Store.List_Sub_Diagnosis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_Sub_Diagnosis_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MainDiagnosis" ColumnName="MainDiagnosis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Unit">
+            <EntityTypeMapping TypeName="OnkolabModel.Unit">
+              <MappingFragment StoreEntitySet="Unit">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EtkenMadde">
+            <EntityTypeMapping TypeName="OnkolabModel.EtkenMadde">
+              <MappingFragment StoreEntitySet="EtkenMadde">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DilitionAmount" ColumnName="DilitionAmount" />
+                <ScalarProperty Name="Eva" ColumnName="Eva" />
+                <ScalarProperty Name="Pe" ColumnName="Pe" />
+                <ScalarProperty Name="Pvc" ColumnName="Pvc" />
+                <ScalarProperty Name="Izodex" ColumnName="Izodex" />
+                <ScalarProperty Name="Dex" ColumnName="Dex" />
+                <ScalarProperty Name="Sf" ColumnName="Sf" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Dose" ColumnName="Dose" />
+                <ScalarProperty Name="ProtokolId" ColumnName="ProtokolId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="OnkolabModel.Patients">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrescriptionItems">
+            <EntityTypeMapping TypeName="OnkolabModel.PrescriptionItems">
+              <MappingFragment StoreEntitySet="PrescriptionItems">
+                <ScalarProperty Name="ExtraNotes" ColumnName="ExtraNotes" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UygualamTarihi" ColumnName="UygualamTarihi" />
+                <ScalarProperty Name="Pe" ColumnName="Pe" />
+                <ScalarProperty Name="Eva" ColumnName="Eva" />
+                <ScalarProperty Name="Pvc" ColumnName="Pvc" />
+                <ScalarProperty Name="Izodex" ColumnName="Izodex" />
+                <ScalarProperty Name="Dex" ColumnName="Dex" />
+                <ScalarProperty Name="Sf" ColumnName="Sf" />
+                <ScalarProperty Name="SeyreltmeMiktari" ColumnName="SeyreltmeMiktari" />
+                <ScalarProperty Name="UygulanacakDoz" ColumnName="UygulanacakDoz" />
+                <ScalarProperty Name="HesaplananDoz" ColumnName="HesaplananDoz" />
+                <ScalarProperty Name="EtkenMaddeId" ColumnName="EtkenMaddeId" />
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prescription">
+            <EntityTypeMapping TypeName="OnkolabModel.Prescription">
+              <MappingFragment StoreEntitySet="Prescription">
+                <ScalarProperty Name="Silindi" ColumnName="Silindi" />
+                <ScalarProperty Name="TeslimEdilecekBirimId" ColumnName="TeslimEdilecekBirimId" />
+                <ScalarProperty Name="Bsa" ColumnName="Bsa" />
+                <ScalarProperty Name="MainDiagnosisId" ColumnName="MainDiagnosisId" />
+                <ScalarProperty Name="SubDiagnosisId" ColumnName="SubDiagnosisId" />
+                <ScalarProperty Name="ProtokolId" ColumnName="ProtokolId" />
+                <ScalarProperty Name="Kg" ColumnName="Kg" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="OnkolabModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Speeds">
+            <EntityTypeMapping TypeName="OnkolabModel.Speeds">
+              <MappingFragment StoreEntitySet="Speeds">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="List_Prescription" FunctionName="OnkolabModel.Store.List_Prescription">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_Prescription_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="Kg" ColumnName="Kg" />
+                <ScalarProperty Name="HastaAdı" ColumnName="HastaAdı" />
+                <ScalarProperty Name="Hasta_Soyadı" ColumnName="Hasta Soyadı" />
+                <ScalarProperty Name="Bsa" ColumnName="Bsa" />
+                <ScalarProperty Name="ProtokolAdı" ColumnName="ProtokolAdı" />
+                <ScalarProperty Name="AltTanı" ColumnName="AltTanı" />
+                <ScalarProperty Name="AnıTanı" ColumnName="AnıTanı" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="List_Prescription_SP" FunctionName="OnkolabModel.Store.List_Prescription_SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_Prescription_SP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="Kg" ColumnName="Kg" />
+                <ScalarProperty Name="HastaAdi" ColumnName="HastaAdi" />
+                <ScalarProperty Name="HastaSoyadi" ColumnName="HastaSoyadi" />
+                <ScalarProperty Name="Bsa" ColumnName="Bsa" />
+                <ScalarProperty Name="ProtokolAdi" ColumnName="ProtokolAdi" />
+                <ScalarProperty Name="AltTani" ColumnName="AltTani" />
+                <ScalarProperty Name="AnaTani" ColumnName="AnaTani" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="OnkolabModel.Medicines">
+              <MappingFragment StoreEntitySet="Medicines">
+                <ScalarProperty Name="FormTipi" ColumnName="FormTipi" />
+                <ScalarProperty Name="EnjeksiyonHiziId" ColumnName="EnjeksiyonHiziId" />
+                <ScalarProperty Name="SeyreltmeSolisyonu" ColumnName="SeyreltmeSolisyonu" />
+                <ScalarProperty Name="SonKullanımSuresi" ColumnName="SonKullanımSuresi" />
+                <ScalarProperty Name="KaristirmaSuresi" ColumnName="KaristirmaSuresi" />
+                <ScalarProperty Name="BirimDoz" ColumnName="BirimDoz" />
+                <ScalarProperty Name="KaristirmaHiziId" ColumnName="KaristirmaHiziId" />
+                <ScalarProperty Name="TasiyiciSolisyon" ColumnName="TasiyiciSolisyon" />
+                <ScalarProperty Name="mgveyau1" ColumnName="mgveyau1" />
+                <ScalarProperty Name="CozmeHızıId" ColumnName="CozmeHızıId" />
+                <ScalarProperty Name="CozucuMıktarı" ColumnName="CozucuMıktarı" />
+                <ScalarProperty Name="CozucuTuruId" ColumnName="CozucuTuruId" />
+                <ScalarProperty Name="Ozkutle" ColumnName="Ozkutle" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Ml" ColumnName="Ml" />
+                <ScalarProperty Name="Mg" ColumnName="Mg" />
+                <ScalarProperty Name="Gtin" ColumnName="Gtin" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="EtkenMaddeId" ColumnName="EtkenMaddeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Injectors">
+            <EntityTypeMapping TypeName="OnkolabModel.Injectors">
+              <MappingFragment StoreEntitySet="Injectors">
+                <ScalarProperty Name="BotValue" ColumnName="BotValue" />
+                <ScalarProperty Name="BotIndex" ColumnName="BotIndex" />
+                <ScalarProperty Name="TopValue" ColumnName="TopValue" />
+                <ScalarProperty Name="TopIndex" ColumnName="TopIndex" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="List_Protokol_SP" FunctionName="OnkolabModel.Store.List_Protokol_SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_Protokol_SP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AltTanı" ColumnName="AltTanı" />
+                <ScalarProperty Name="AnaTanı" ColumnName="AnaTanı" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="List_EtkenMadde_SP" FunctionName="OnkolabModel.Store.List_EtkenMadde_SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_EtkenMadde_SP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AltTanı" ColumnName="AltTanı" />
+                <ScalarProperty Name="AnaTanı" ColumnName="AnaTanı" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Dose" ColumnName="Dose" />
+                <ScalarProperty Name="Sf" ColumnName="Sf" />
+                <ScalarProperty Name="Dex" ColumnName="Dex" />
+                <ScalarProperty Name="Izodex" ColumnName="Izodex" />
+                <ScalarProperty Name="Pvc" ColumnName="Pvc" />
+                <ScalarProperty Name="Pe" ColumnName="Pe" />
+                <ScalarProperty Name="Eva" ColumnName="Eva" />
+                <ScalarProperty Name="DilitionAmount" ColumnName="DilitionAmount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="List_EtkenMaddes_SP" FunctionName="OnkolabModel.Store.List_EtkenMaddes_SP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.List_EtkenMaddes_SP_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EtkenMadde" ColumnName="EtkenMadde" />
+                <ScalarProperty Name="Protokol" ColumnName="Protokol" />
+                <ScalarProperty Name="AltTanı" ColumnName="AltTanı" />
+                <ScalarProperty Name="AnaTanı" ColumnName="AnaTanı" />
+                <ScalarProperty Name="Birim" ColumnName="Birim" />
+                <ScalarProperty Name="Dose" ColumnName="Dose" />
+                <ScalarProperty Name="Sf" ColumnName="Sf" />
+                <ScalarProperty Name="Dex" ColumnName="Dex" />
+                <ScalarProperty Name="Izodex" ColumnName="Izodex" />
+                <ScalarProperty Name="Pvc" ColumnName="Pvc" />
+                <ScalarProperty Name="Pe" ColumnName="Pe" />
+                <ScalarProperty Name="Eva" ColumnName="Eva" />
+                <ScalarProperty Name="DilitionAmount" ColumnName="DilitionAmount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="OperationItems">
+            <EntityTypeMapping TypeName="OnkolabModel.OperationItems">
+              <MappingFragment StoreEntitySet="OperationItems">
+                <ScalarProperty Name="TripCounter" ColumnName="TripCounter" />
+                <ScalarProperty Name="InjektorId" ColumnName="InjektorId" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="OnkolabModel.Operations">
+              <MappingFragment StoreEntitySet="Operations">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EtkenMaddeId" ColumnName="EtkenMaddeId" />
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Operation_Sp" FunctionName="OnkolabModel.Store.Operation_Sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OnkolabModel.Operation_Sp_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Boy" ColumnName="Boy" />
+                <ScalarProperty Name="Kg" ColumnName="Kg" />
+                <ScalarProperty Name="Bsa" ColumnName="Bsa" />
+                <ScalarProperty Name="EtkenMadde" ColumnName="EtkenMadde" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
